@@ -54,9 +54,7 @@ function App() {
       }
     }
   }, [choiceOne, choiceTwo]);
-  console.log(cards);
-  console.log(choiceOne);
-  console.log(choiceTwo);
+
   return (
     <div className="App">
       <h1>React Memory Match</h1>
@@ -65,7 +63,12 @@ function App() {
       <p>{turns}</p>
       <div className="card-grid">
         {cards.map((card) => (
-          <SingleCard card={card} handleChoice={handleChoice} key={card.id} />
+          <SingleCard
+            card={card}
+            handleChoice={handleChoice}
+            key={card.id}
+            flipped={card === choiceOne || card === choiceOne || card.matched}
+          />
         ))}
       </div>
     </div>
