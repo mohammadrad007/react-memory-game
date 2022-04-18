@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleCard from "./components/SingleCard";
 import "./App.css";
 
@@ -30,11 +30,30 @@ function App() {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurn) => prevTurn + 1);
+  };
+
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        console.log("Match");
+        resetTurn();
+      } else {
+        resetTurn();
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+  console.log(choiceOne);
+  console.log(choiceTwo);
   return (
     <div className="App">
       <h1>React Memory Match</h1>
       <button onClick={shuffleCards}>New Game</button>
 
+      <p>{turns}</p>
       <div className="card-grid">
         {cards.map((card) => (
           <SingleCard card={card} handleChoice={handleChoice} key={card.id} />
