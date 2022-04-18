@@ -14,6 +14,8 @@ const cardImages = [
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -23,7 +25,11 @@ function App() {
     setCards(shuffledCards);
     setTurns(0);
   };
-  console.log(cards);
+
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
+
   return (
     <div className="App">
       <h1>React Memory Match</h1>
@@ -31,7 +37,7 @@ function App() {
 
       <div className="card-grid">
         {cards.map((card) => (
-          <SingleCard card={card} key={card.id} />
+          <SingleCard card={card} handleChoice={handleChoice} key={card.id} />
         ))}
       </div>
     </div>
