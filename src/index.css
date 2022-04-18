@@ -8,3 +8,6 @@ body {
   background-color: #1b1523;
   color: #fff;
 }
+a {
+  text-decoration: none;
+}

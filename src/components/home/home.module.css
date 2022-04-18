@@ -1,0 +1,19 @@
+.container {
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  margin: 40px auto;
+  flex-direction: column;
+}
+.container p {
+  font-size: 2rem;
+}
+.container a {
+  color: aliceblue;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
