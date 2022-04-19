@@ -11,6 +11,8 @@ const LevelOne = () => {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  // const [ready, setReady] = useState(false);
+  let turnClass;
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImageOne, ...cardImageOne]
@@ -52,12 +54,34 @@ const LevelOne = () => {
         }, 1000);
       }
     }
+    const ready = cards.filter((c) => !c.matched);
+    console.log(ready);
+    console.log(turns);
+    if (turns <= 12 && ready.length === 0) {
+      console.log("ready for go to level two");
+    }
   }, [choiceOne, choiceTwo]);
+
+  switch (true) {
+    case turns < 8:
+      turnClass = classes.green;
+      break;
+    case turns < 10:
+      turnClass = classes.yellow;
+      break;
+    case turns > 8:
+      turnClass = classes.red;
+      break;
+    default:
+      turnClass = classes.green;
+  }
+
   return (
     <div className={classes.container}>
       <h1>React Memory Match</h1>
       <button onClick={shuffleCards}>New Game</button>
       <p>{turns}</p>
+      <p className={turnClass}>Hints: you turns must be littel than 12</p>
       <div className={classes.cardGrid}>
         {cards.map((card) => (
           <SingleCard
