@@ -3,6 +3,10 @@
   margin: 0 auto 5rem;
   min-height: 60rem;
 }
+.container h1 {
+  font-size: 2rem;
+  color: #eecad6;
+}
 p {
   font-size: 1rem;
   font-weight: 600;
@@ -24,7 +28,7 @@ button:hover {
 .cardGrid {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
 

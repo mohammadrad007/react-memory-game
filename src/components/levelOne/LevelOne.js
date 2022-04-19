@@ -85,7 +85,9 @@ const LevelOne = () => {
     default:
       turnClass = classes.green;
   }
-
+  useEffect(() => {
+    scrollHandler(0, 0);
+  }, []);
   return (
     <div className={classes.container}>
       <h1>React Memory Match</h1>

@@ -85,10 +85,12 @@ const LevelOne = () => {
     default:
       turnClass = classes.green;
   }
-
+  useEffect(() => {
+    scrollHandler(0, 0);
+  }, []);
   return (
     <div className={classes.container}>
-      <h1>React Memory Match</h1>
+      <h1>Nice Job, you are in level two, so game is harder.</h1>
       <button onClick={shuffleCards}>
         {cards.length === 0 ? `Start Game` : `Refresh Game`}
       </button>
