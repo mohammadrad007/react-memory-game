@@ -1,0 +1,75 @@
+.container {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  min-height: 60rem;
+}
+p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+button {
+  background: none;
+  border: 2px solid #ffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #ffff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+}
+button:hover {
+  background-color: #c23866;
+  color: #ffff;
+}
+.cardGrid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.green {
+  color: green;
+}
+.yellow {
+  color: yellow;
+}
+.red {
+  color: red;
+}
+.great,
+.loser {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.great a {
+  color: goldenrod;
+  border: 1px solid gold;
+  font-size: 1.2rem;
+  padding: 0.2rem 1.2rem;
+  border-radius: 3px;
+}
+.great a:hover {
+  color: gold;
+  border: 1px solid goldenrod;
+}
+.loser p {
+  color: red;
+  font-size: 1.1rem;
+}
+.loser button {
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.2rem;
+  padding: 0.3rem 1.2rem;
+  border-radius: 3px;
+  font-weight: 400;
+}
+.loser button:hover {
+  color: rgba(255, 255, 255, 0.894);
+  border: 1px solid rgba(255, 255, 255, 0.926);
+  background: none;
+}
