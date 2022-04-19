@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap");
 
+* {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { scrollHandler } from "../../global/global";
 import SingleCard from "../singleCard/SingleCard";
 
 import { cardImageOne } from "./../../data/levelOneData";
@@ -11,7 +13,9 @@ const LevelOne = () => {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  // const [ready, setReady] = useState(false);
+  const [levelup, setLevelup] = useState(false);
+  const [loser, setLoser] = useState(false);
+  const [matchStarted, setMatchStarted] = useState(false);
   let turnClass;
 
   const shuffleCards = () => {
@@ -21,6 +25,8 @@ const LevelOne = () => {
 
     setCards(shuffledCards);
     setTurns(0);
+    scrollHandler(0, 100);
+    setMatchStarted(true);
   };
 
   const handleChoice = (card) => {
@@ -55,10 +61,12 @@ const LevelOne = () => {
       }
     }
     const ready = cards.filter((c) => !c.matched);
-    console.log(ready);
-    console.log(turns);
-    if (turns <= 12 && ready.length === 0) {
-      console.log("ready for go to level two");
+    if (turns <= 12 && ready.length === 0 && matchStarted) {
+      setLevelup(true);
+      scrollHandler(0, 800);
+    } else {
+      setLoser(false);
+      scrollHandler(0, 800);
     }
   }, [choiceOne, choiceTwo]);
 
@@ -79,9 +87,11 @@ const LevelOne = () => {
   return (
     <div className={classes.container}>
       <h1>React Memory Match</h1>
-      <button onClick={shuffleCards}>New Game</button>
-      <p>{turns}</p>
-      <p className={turnClass}>Hints: you turns must be littel than 12</p>
+      <button onClick={shuffleCards}>
+        {cards.length === 0 ? `Start Game` : `Refresh Game`}
+      </button>
+      <p>Your turns: {turns}</p>
+      <p className={turnClass}>Hints: you turns must be little than 12</p>
       <div className={classes.cardGrid}>
         {cards.map((card) => (
           <SingleCard
@@ -93,6 +103,18 @@ const LevelOne = () => {
           />
         ))}
       </div>
+      {levelup && (
+        <div className={classes.great}>
+          <p>Greate, now you can go to next level.</p>
+          <Link to="/leveltwo">Go to level two</Link>
+        </div>
+      )}
+      {true && (
+        <div className={classes.loser}>
+          <p>Losed!! but you can try again.</p>
+          <button onClick={shuffleCards}>try again</button>
+        </div>
+      )}
     </div>
   );
 };
