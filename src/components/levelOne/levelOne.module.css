@@ -1,3 +1,7 @@
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
 button {
   background: none;
   border: 2px solid #ffff;
@@ -12,7 +16,7 @@ button:hover {
   background-color: #c23866;
   color: #ffff;
 }
-.card-grid {
+.cardGrid {
   margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

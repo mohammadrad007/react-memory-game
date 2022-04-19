@@ -1,4 +1,4 @@
-import "./singleCard.css";
+import classes from "./singleCard.module.css";
 
 const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
@@ -6,13 +6,13 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
       handleChoice(card);
     }
   };
-  console.log(disabled);
+
   return (
-    <div className="card">
-      <div className={flipped ? "flipped" : ""}>
-        <img className="front" src={card.src} alt="card front" />
+    <div className={classes.card}>
+      <div className={flipped ? classes.flipped : ""}>
+        <img className={classes.front} src={card.src} alt="card front" />
         <img
-          className="back"
+          className={classes.back}
           src="/img/cover.png"
           alt="card back"
           onClick={() => handleClick(card)}

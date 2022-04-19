@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import SingleCard from "../SingleCard";
-const cardImages = [
-  { src: "/img/helmet-1.png", matched: false },
-  { src: "/img/potion-1.png", matched: false },
-  { src: "/img/ring-1.png", matched: false },
-  { src: "/img/scroll-1.png", matched: false },
-  { src: "/img/shield-1.png", matched: false },
-  { src: "/img/sword-1.png", matched: false },
-];
+import SingleCard from "../singleCard/SingleCard";
+
+import { cardImageOne } from "./../../data/levelOneData";
+
+import classes from "./levelOne.module.css";
 
 const LevelOne = () => {
   const [cards, setCards] = useState([]);
@@ -17,7 +13,7 @@ const LevelOne = () => {
   const [disabled, setDisabled] = useState(false);
 
   const shuffleCards = () => {
-    const shuffledCards = [...cardImages, ...cardImages]
+    const shuffledCards = [...cardImageOne, ...cardImageOne]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
 
@@ -58,11 +54,11 @@ const LevelOne = () => {
     }
   }, [choiceOne, choiceTwo]);
   return (
-    <div>
+    <div className={classes.container}>
       <h1>React Memory Match</h1>
       <button onClick={shuffleCards}>New Game</button>
       <p>{turns}</p>
-      <div className="card-grid">
+      <div className={classes.cardGrid}>
         {cards.map((card) => (
           <SingleCard
             card={card}
