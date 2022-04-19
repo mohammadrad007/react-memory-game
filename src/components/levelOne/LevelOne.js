@@ -27,6 +27,8 @@ const LevelOne = () => {
     setTurns(0);
     scrollHandler(0, 100);
     setMatchStarted(true);
+    setLevelup(false);
+    setLoser(false);
   };
 
   const handleChoice = (card) => {
@@ -64,11 +66,11 @@ const LevelOne = () => {
     if (turns <= 12 && ready.length === 0 && matchStarted) {
       setLevelup(true);
       scrollHandler(0, 800);
-    } else {
-      setLoser(false);
+    } else if (turns > 12 && ready.length === 0 && matchStarted) {
+      setLoser(true);
       scrollHandler(0, 800);
     }
-  }, [choiceOne, choiceTwo]);
+  }, [choiceOne, choiceTwo, turns, matchStarted, cards]);
 
   switch (true) {
     case turns < 8:
@@ -109,7 +111,7 @@ const LevelOne = () => {
           <Link to="/leveltwo">Go to level two</Link>
         </div>
       )}
-      {true && (
+      {loser && (
         <div className={classes.loser}>
           <p>Losed!! but you can try again.</p>
           <button onClick={shuffleCards}>try again</button>
